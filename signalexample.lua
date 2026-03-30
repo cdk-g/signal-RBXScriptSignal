@@ -1,4 +1,4 @@
-	local Signal = require(signal)
+	local Signal = require(signalmodule)
 	local sig = Signal.new()
 
 	local conn = sig:Connect(function(...)
