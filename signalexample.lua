@@ -1,21 +1,19 @@
-	local Signal = require(signalmodule)
-	local sig = Signal.new()
+ local Signal = require(game.ReplicatedStorage.rblx["@signal"])
+local sig = Signal.new()
 
-	local conn = sig:Connect(function(...)
-		print(...)
-	end)
 
-	sig:Fire("hi")
-	conn:Disconnect()
+  local conn = sig:Connect(function(msg)
+        print(msg)
+  end)
 
-	sig:Once(function(msg)
-		print(msg)
-	end)
+  sig:Fire("hi")
+  conn:Disconnect()
 
-	task.spawn(function()
-		local msg = sig:Wait()
-		print(msg)
-	end)
 
-	sig:DisconnectAll()
-	sig:Destroy()
+
+  sig:Once(function(msg)
+        print(msg)
+  end)
+
+  sig:Fire("first")
+  sig:Fire("second") 
